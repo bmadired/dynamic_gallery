@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Call Stack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Task Call Stack</h1>
+  
+  <!-- Input field for task name -->
+  <input type="text" id="taskInput" placeholder="Enter Task Name" />
+  
+  <!-- Button to add task -->
+  <button id="addTaskBtn">Add Task</button>
+  
+  <!-- Button to undo the task -->
+  <button id="undoTaskBtn">Undo Task</button>
+
+  <!-- Section to display the current task stack -->
+  <div id="currentPipeline">
+    <h3>PROCESS LINE</h3>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

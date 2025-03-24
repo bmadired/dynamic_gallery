@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Info</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; margin: 30px; }
+        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 50%; margin: auto; }
+        input, button { width: 80%; padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background: #007bff; color: white; cursor: pointer; border: none; }
+        button:hover { background: #0056b3; }
+        .clear-btn { background: #dc3545; }
+        .clear-btn:hover { background: #a71d2a; }
+        .student-card { background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h2>Student Information System</h2>
+    <div class="container">
+        <input id="name" placeholder="Enter Name">
+        <input id="idNumber" placeholder="Enter ID Number">
+        <input id="age" placeholder="Enter Age">
+        <input id="course" placeholder="Enter Course">
+        <button onclick="insertStudent()">Insert Student</button>
+        <button class="clear-btn" onclick="clearInput()">Clear Input</button>
+        <button onclick="showStudentInfo()">Show All Students</button>
+        <button class="clear-btn" onclick="clearDisplay()">Clear Display</button>
+        
+        <h3>Search Student:</h3>
+        <input id="search" placeholder="Search by Name, ID, Age, or Course" oninput="searchStudent()">
+        
+        <div id="demo_div"></div>
+    </div>
+
+    <script>
+        class Student {
+            constructor(name, idNumber, age, course) {
+                Object.assign(this, { name, idNumber, age, course });
+            }
+        }
+        const students = [];
+        const getInput = id => document.getElementById(id).value.trim();
+        const clearInput = () => document.querySelectorAll("input").forEach(input => input.value = "");
+
+        function insertStudent() {
+            const [name, idNumber, age, course] = ["name", "idNumber", "age", "course"].map(getInput);
+            if ([name, idNumber, age, course].includes("")) return alert("Please fill in all fields.");
+            students.push(new Student(name, idNumber, age, course));
+            alert("Student information inserted successfully!");
+            clearInput();
+        }
+
+        function showStudentInfo(filter = "") {
+            const filteredStudents = students.filter(s => 
+                Object.values(s).some(value => value.toLowerCase().includes(filter.toLowerCase()))
+            );
+
+            document.getElementById("demo_div").innerHTML = filteredStudents.length
+                ? filteredStudents.map((s, i) => `<div class="student-card">
+                    <h4>Student ${i + 1}</h4>
+                    <p><strong>Name:</strong> ${s.name}</p>
+                    <p><strong>ID Number:</strong> ${s.idNumber}</p>
+                    <p><strong>Age:</strong> ${s.age}</p>
+                    <p><strong>Course:</strong> ${s.course}</p>
+                </div>`).join("")
+                : "<p>No matching student found.</p>";
+        }
+
+        function searchStudent() {
+            showStudentInfo(document.getElementById("search").value);
+        }
+
+        const clearDisplay = () => document.getElementById("demo_div").innerHTML = "";
+    </script>
+</body>
+</html>

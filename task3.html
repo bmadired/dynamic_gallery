@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function demo() {
+                const name = document.getElementById("nameInput").value;
+                if (name) {
+                    alert("Welcome to JS, " + name + "!");
+                } else {
+                    alert("Please enter your name.");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div1">Enter your Name:</div>
+        <input type="text" id="nameInput" placeholder="Type your name here" />
+        <button onclick="demo();">Enter</button>
+    </body>
+</html>

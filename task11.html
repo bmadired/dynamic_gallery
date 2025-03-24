@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html>
+
+<head></head>
+
+
+<body>
+    <div id="time">
+
+    <input placeholder="Enter A" id= "input_a"/>
+    <input placeholder="Enter B" id= "input_b"/>
+    <button onclick = "generate_random_value();">generate_random_value</button>
+    <div id= "output_div"></div>
+    </div>
+    <script>
+        let colors= ["red","yellow","green","purple"]
+        function generate_random_value()
+        {
+        let min_value = parseInt(document.getElementById("input_a").value);
+        let max_value=parseInt(document.getElementById("input_b").value);
+        let random_value= Math.floor(Math.random() * (max_value - min_value + 1)) + min_value;
+        document.getElementById ("output_div").innerHTML= random_value;
+
+        let size= colors.length;
+        let idx= Math.floor(Math.random()*size);
+        document.getElementById("output_div").style= "color:"+ colors[idx];
+        setTimeout(() => {
+                document.getElementById ("time").style.display= "none";
+            }, 5000); 
+    
+
+    }
+
+
+    </script>
+</body> 
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <style>
+        .wrapper {
+            display: flex;
+            height: 100vh;
+        }
+
+        nav {
+            width: 250px;
+            background-color: #2c3e50;
+            padding: 15px;
+            color: white;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #34495e;
+        }
+
+        nav ul li:hover {
+            background-color: #34495e;
+        }
+
+        section {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ecf0f1;
+        }
+
+        iframe {
+            width: 85%;
+            height: 85%;
+            border: 1px solid #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <ul id="projectNav">
+                <!-- Dynamic list will be inserted here -->
+            </ul>
+        </nav>
+        <section>
+            <iframe id="contentFrame" src="" frameborder="0"></iframe>
+        </section>
+    </div>
+
+    <script>
+        const projects = {
+            "project1": { "name": "Project 1", "link": "task1_1.html" },
+            "project2": { "name": "Project 2", "link": "task2.html" },
+            "project3": { "name": "Project 3", "link": "task3.html" },
+            "project4": { "name": "Project 4", "link": "task4.html" },
+            "project5": { "name": "Project 5", "link": "task5.html" },
+            "project6": { "name": "Project 6", "link": "task6.html" },
+            "project7": { "name": "Project 7", "link": "task7.html" },
+            "project8": { "name": "Project 8", "link": "task8.html" },
+            "project9": { "name": "Project 9", "link": "task9.html" },
+            "project10": { "name": "Project 10", "link": "task10.html" },
+            "project11": { "name": "Project 11", "link": "task11.html" },
+        };
+
+        const navList = document.getElementById("projectNav");
+        const iframe = document.getElementById("contentFrame");
+
+        Object.keys(projects).forEach((id) => {
+            let listItem = document.createElement("li");
+            listItem.textContent = projects[id].name;
+            listItem.addEventListener("click", () => {
+                iframe.src = projects[id].link;
+            });
+            navList.appendChild(listItem);
+        });
+
+        window.onload = () => {
+            iframe.src = projects["project1"].link;  // Default project to load
+        };
+    </script>
+</body>
+</html>

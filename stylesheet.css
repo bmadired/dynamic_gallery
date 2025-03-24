@@ -1,0 +1,36 @@
+* {
+    text-align: center;
+    font-family: Arial, sans-serif;
+ }
+ .header_div {
+    background-color: antiquewhite;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+ }
+ .content_div {
+    margin-top: 20px;
+    background-color: rgb(173, 300, 230);
+    text-align: justify;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+ }
+ .footer_div {
+    margin-top: 20px;
+    padding: 10px;
+ }
+ #btn_ref {
+    text-decoration: none;
+ }
+ button {
+    background-color: lightgray;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+ }
+ button:hover {
+    background-color: yellow;
+ }
