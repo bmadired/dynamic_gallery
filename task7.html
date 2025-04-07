@@ -4,27 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Call Stack</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    #taskInput {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    #currentPipeline {
+      margin-top: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background-color: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
 
   <h1>Task Call Stack</h1>
   
-  <!-- Input field for task name -->
   <input type="text" id="taskInput" placeholder="Enter Task Name" />
   
-  <!-- Button to add task -->
   <button id="addTaskBtn">Add Task</button>
   
-  <!-- Button to undo the task -->
   <button id="undoTaskBtn">Undo Task</button>
 
-  <!-- Section to display the current task stack -->
   <div id="currentPipeline">
     <h3>PROCESS LINE</h3>
     <ul id="taskList"></ul>
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    let taskStack = [];
+    const taskInput = document.getElementById('taskInput');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const undoTaskBtn = document.getElementById('undoTaskBtn');
+    const taskList = document.getElementById('taskList');
+
+    function updateTaskList() {
+      taskList.innerHTML = '';
+      taskStack.forEach((task) => {
+        const li = document.createElement('li');
+        li.textContent = task;
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask() {
+      const task = taskInput.value.trim();
+      if (task) {
+        taskStack.push(task);
+        updateTaskList();
+        taskInput.value = '';
+      } else {
+        alert('Please enter a valid task.');
+      }
+    }
+
+    function undoTask() {
+      if (taskStack.length > 0) {
+        taskStack.pop();
+        updateTaskList();
+      } else {
+        alert('No tasks to undo.');
+      }
+    }
+
+    addTaskBtn.addEventListener('click', addTask);
+    undoTaskBtn.addEventListener('click', undoTask);
+
+    taskInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        addTask();
+      }
+    });
+  </script>
+
 </body>
 </html>
