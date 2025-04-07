@@ -1,19 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="custom_style.css">
     <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .header_div {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .header_div h1 {
+            margin: 0;
+        }
+        .content_div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .project_card {
+            background-color: #fff;
+            width: 250px;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .project_card h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .project_card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .btn_add {
+            display: block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <!-- Heading -->
+
     <div class="header_div">
         <h1>Welcome to the Custom Dashboard</h1>
         <p>Yeah I got it!!</p>
     </div>
-    <!-- Content -->
-    <div class="content_div">
-    
+
+    <div class="content_div" id="projectGallery">
+        <!-- Dynamic Project Cards will go here -->
     </div>
-    <!-- Button -->
+
+    <div class="btn_add" id="addProjectBtn">Add New Project</div>
+
+    <script>
+        const projectGallery = document.getElementById('projectGallery');
+        const addProjectBtn = document.getElementById('addProjectBtn');
+
+        const tasks = [
+            { name: "Task 1: HTML CSS Styling", description: "Learn basic HTML and CSS for layout and design." },
+            { name: "Task 2: What-If Scores", description: "You can view your grades based on What-If scores to predict future grades." },
+            { name: "Task 3: CSS Hover", description: "Learn to use hover effects in CSS." },
+            { name: "Task 4: Welcome to JS", description: "Introduction to JavaScript." },
+            { name: "Task 5: Calculator with JS", description: "Build a calculator using JavaScript." },
+            { name: "Task 6: GitHub Integration", description: "Learn how to integrate GitHub into your projects." },
+            { name: "Task 7: Console Output", description: "Practice using the console in JavaScript." },
+            { name: "Task 8: String Operation", description: "Learn how to manipulate strings in JavaScript." },
+            { name: "Task 9: Conditions", description: "Learn to use conditional statements in JavaScript." },
+            { name: "Task 10: Call-Stack with Array", description: "Learn about arrays and call stacks in JavaScript." }
+        ];
+
+        function updateGallery() {
+            projectGallery.innerHTML = '';
+            tasks.forEach(task => {
+                const card = document.createElement('div');
+                card.classList.add('project_card');
+                card.innerHTML = `
+                    <h3>${task.name}</h3>
+                    <p><span>Description:</span> ${task.description}</p>
+                `;
+                projectGallery.appendChild(card);
+            });
+        }
+
+        addProjectBtn.addEventListener('click', () => {
+            const newTask = {
+                name: `Task ${tasks.length + 1}: New Task`,
+                description: `Description for new task ${tasks.length + 1}.`
+            };
+            tasks.push(newTask);
+            updateGallery();
+        });
+
+        updateGallery();
+    </script>
+
 </body>
 </html>
