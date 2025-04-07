@@ -2,6 +2,29 @@
 <html>
 <head>
     <title>Grade Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -9,7 +32,30 @@
     <button id="checkBtn">Submit</button>
     <p id="output"></p>
 
-    <script src="script.js"></script>
+    <script>
+        const checkBtn = document.getElementById('checkBtn');
+        const numInput = document.getElementById('num');
+        const output = document.getElementById('output');
+
+        function checkGrade() {
+            const score = Number(numInput.value);
+            if (score >= 90 && score <= 100) {
+                output.textContent = "Grade: A";
+            } else if (score >= 80 && score < 90) {
+                output.textContent = "Grade: B";
+            } else if (score >= 70 && score < 80) {
+                output.textContent = "Grade: C";
+            } else if (score >= 60 && score < 70) {
+                output.textContent = "Grade: D";
+            } else if (score >= 0 && score < 60) {
+                output.textContent = "Grade: F";
+            } else {
+                output.textContent = "Please enter a valid score between 0 and 100.";
+            }
+        }
+
+        checkBtn.addEventListener('click', checkGrade);
+    </script>
 
 </body>
 </html>
