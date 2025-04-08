@@ -1,115 +1,66 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Index</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .header_div {
+            background-color: #f0f8ff;
             text-align: center;
+            padding: 50px;
+        }
+
+        .header_div {
             background-color: #4CAF50;
             color: white;
             padding: 20px;
             border-radius: 10px;
-            margin-bottom: 20px;
         }
-        .header_div h1 {
-            margin: 0;
-        }
+
         .content_div {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
-        .project_card {
-            background-color: #fff;
-            width: 250px;
-            margin: 10px;
+            margin: 30px auto;
             padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            border: 1px solid #ddd;
+            font-size: 20px;
+            background-color: #e0f7fa;
+            border-radius: 10px;
+            width: 50%;
         }
-        .project_card h3 {
-            font-size: 18px;
-            margin-top: 10px;
+
+        .footer_div {
+            margin-top: 40px;
         }
-        .project_card p {
-            font-size: 14px;
-            color: #555;
-        }
-        .btn_add {
-            display: block;
-            background-color: #4CAF50;
+
+        #btn_ref button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
             color: white;
-            padding: 10px;
-            width: 200px;
-            margin: 20px auto;
-            text-align: center;
-            border-radius: 5px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
+        }
+
+        #btn_ref button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-
+    <!-- Heading -->
     <div class="header_div">
-        <h1>Welcome to the Custom Dashboard</h1>
-        <p>Yeah I got it!!</p>
+        <h1>Welcome to My Custom Designed Page!</h1>
     </div>
+    <!-- Content -->
+    <div class="content_div">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-    <div class="content_div" id="projectGallery">
-        <!-- Dynamic Project Cards will go here -->
+</p>
     </div>
-
-    <div class="btn_add" id="addProjectBtn">Add New Project</div>
-
-    <script>
-        const projectGallery = document.getElementById('projectGallery');
-        const addProjectBtn = document.getElementById('addProjectBtn');
-
-        const tasks = [
-            { name: "Task 1: HTML CSS Styling", description: "Learn basic HTML and CSS for layout and design." },
-            { name: "Task 2: What-If Scores", description: "You can view your grades based on What-If scores to predict future grades." },
-            { name: "Task 3: CSS Hover", description: "Learn to use hover effects in CSS." },
-            { name: "Task 4: Welcome to JS", description: "Introduction to JavaScript." },
-            { name: "Task 5: Calculator with JS", description: "Build a calculator using JavaScript." },
-            { name: "Task 6: GitHub Integration", description: "Learn how to integrate GitHub into your projects." },
-            { name: "Task 7: Console Output", description: "Practice using the console in JavaScript." },
-            { name: "Task 8: String Operation", description: "Learn how to manipulate strings in JavaScript." },
-            { name: "Task 9: Conditions", description: "Learn to use conditional statements in JavaScript." },
-            { name: "Task 10: Call-Stack with Array", description: "Learn about arrays and call stacks in JavaScript." }
-        ];
-
-        function updateGallery() {
-            projectGallery.innerHTML = '';
-            tasks.forEach(task => {
-                const card = document.createElement('div');
-                card.classList.add('project_card');
-                card.innerHTML = `
-                    <h3>${task.name}</h3>
-                    <p><span>Description:</span> ${task.description}</p>
-                `;
-                projectGallery.appendChild(card);
-            });
-        }
-
-        addProjectBtn.addEventListener('click', () => {
-            const newTask = {
-                name: `Task ${tasks.length + 1}: New Task`,
-                description: `Description for new task ${tasks.length + 1}.`
-            };
-            tasks.push(newTask);
-            updateGallery();
-        });
-
-        updateGallery();
-    </script>
-
+    <!-- Button -->
+    <div class="footer_div">
+        <a href="dashboard.html" id="btn_ref"><button>Click here to see the Dashboard</button></a>
+    </div>
 </body>
 </html>
